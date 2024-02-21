@@ -76,7 +76,7 @@ export function Navbar() {
           </div>
           <ul className='flex flex-col items-center justify-between min-h-[250px]'>
             {LINKS.map(({name, href}) => (
-              <li className='border-b border-gray-400 my-8 uppercase'>
+              <li key={name} className='border-b border-gray-400 my-8 uppercase'>
                 <Link href={href}>{name}</Link>
               </li>
             ))}

@@ -26,6 +26,7 @@ export function Footer() {
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
+                  placeholder=''
                   variant="small"
                   color="blue-gray"
                   className="mb-3 font-medium opacity-40"
@@ -35,6 +36,7 @@ export function Footer() {
                 {items.map((link) => (
                   <li key={link}>
                     <Typography
+                      placeholder=''
                       as="a"
                       href="#"
                       color="gray"
@@ -58,6 +60,7 @@ export function Footer() {
         </div>
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
+            placeholder=''
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >

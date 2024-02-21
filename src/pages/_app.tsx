@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { I18nextProvider } from 'react-i18next';
-import { Layout } from './layout';
+import Layout from './layout';
 import i18n from '@/locales/i18n';
 
 export default function App({ Component, pageProps }: AppProps) {

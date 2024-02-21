@@ -75,15 +75,11 @@ export function Navbar() {
             </svg>
           </div>
           <ul className='flex flex-col items-center justify-between min-h-[250px]'>
-            <li className='border-b border-gray-400 my-8 uppercase'>
-              <a href='/about'>About</a>
-            </li>
-            <li className='border-b border-gray-400 my-8 uppercase'>
-              <a href='/portfolio'>Portfolio</a>
-            </li>
-            <li className='border-b border-gray-400 my-8 uppercase'>
-              <a href='/contact'>Contact</a>
-            </li>
+            {LINKS.map(({name, href}) => (
+              <li className='border-b border-gray-400 my-8 uppercase'>
+                <Link href={href}>{name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </section>

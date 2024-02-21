@@ -1,118 +1,184 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const inter = Inter({ subsets: ["latin"] });
+import { Button } from '@/components/Button';
+import { InputField } from '@/components/InputField';
+import { Option, Select, Textarea } from '@material-tailwind/react';
+import { MailIcon, MapPin, PhoneIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { ContactForm } from '@/components/ContactForm';
+
+const inter = Inter({subsets: ['latin']});
+
+const pagination = {
+  clickable: true,
+  renderBullet: function (index: number, className: string) {
+    return '<span class="' + className + '">' + '</span>';
+  },
+};
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className={`flex min-w-full min-h-screen flex-col ${inter.className}`}>
+      <Swiper
+        modules={[Pagination]}
+        slidesPerView={1}
+        pagination={pagination}
+        className='w-full max-h-[800px]'
+      >
+        <SwiperSlide className='relative min-w-full'>
+          <div className='hidden md:block absolute left-[5vw] top-[45%] bg-white p-8' >
+            <div className='text-orange-400 font-bold uppercase text-4xl'>
+              Nhà phân phối Thuốc lá
+            </div>
+            <div className='text-orange-400 font-bold uppercase text-4xl'>
+              uy tín chất lượng cao
+            </div>
+            <div>
+              Sau hơn 40 năm, đến nay Công ty Vương Gia Minh đã trở thành <br />{' '}
+              một trong những Công ty ở Việt Nam.
+            </div>
+          </div>
+          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+        </SwiperSlide>
+        <SwiperSlide className='relative min-w-full'>
+          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+        </SwiperSlide>
+        <SwiperSlide className='relative min-w-full'>
+          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+        </SwiperSlide>
+      </Swiper>
+      <div className='mt-10'>
+        <div className='font-bold text-5xl text-center md:text-end md:text-5xl xl:text-8xl md:pr-24 mb-6 text-grey-english uppercase'>
+          About us
+        </div>
+        <div className='md:flex bg-background-default p-8'>
+          <img
+            className='w-[50vw] mx-auto mb-5 md:mt-[-100px]'
+            src='/img/home-about-us.png'
+            alt='about us'
+          />
+          <div className='pl-4'>
+            <div>
+              Công ty TNHH TM Vương Gia Minh đã phát triển trong hơn 40 năm và
+              hiện là một trong những nhà cung ứng nguyên liệu quan trọng trong
+              ngành sản xuất thuốc lá điếu tại Việt Nam. Chúng tôi góp phần vào sự
+              phát triển của ngành này thông qua việc hợp tác với nhiều vùng trồng
+              trên toàn quốc. Với trụ sở tại TP. Hồ Chí Minh, Vương Gia Minh mở
+              rộng tầm ảnh hưởng cả trong và ngoài nước bằng sản phẩm chất lượng
+              và dịch vụ uy tín. Ngoài ra, chúng tôi còn định hướng kết nối vùng
+              Đông Nam Á và tạo nên tương lai sáng hơn cho thị trường thuốc lá
+              Việt Nam.
+            </div>
+            <Button className='float-end'>
+              {t('See more')}
+            </Button>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='mt-10'>
+        <div className='font-bold text-5xl md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
+          Our services
+        </div>
+        <div className='grid grid-cols-2 bg-background-default py-10'>
+          {SERVICES.map((service, index) => (
+            <ServiceCard key={index} {...service} />
+          ))}
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='mt-10 mx-20'>
+        <div className='font-bold text-5xl text-center md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
+          Products
+        </div>
+        <div className='flex gap-10 mt-10'>
+          {PRODUCTS.map((product, index) => (<ProductCard key={index} {...product} />))}
+        </div>
       </div>
+      <div className='mt-20 flex'>
+        <div className='bg-white brightness-[40%]'>
+          <img className='w-[80%]' src='/img/world-map.png' alt='map' />
+        </div>
+        <div className='absolute text-white right-20 mt-10'>
+          <div className='text-6xl uppercase font-bold'>Networks</div>
+          <div className='text-2xl text-right uppercase font-bold'>Mạng lưới phân phối</div>
+          <div className='mt-6'>
+            <div className='font-bold text-6xl'>120</div>
+            <div className='text-2xl'>nhà phân phối trong nước</div>
+          </div>
+          <div className='mt-6'>
+            <div className='font-bold text-6xl'>20</div>
+            <div className='text-2xl'>nước đã xuất khẩu</div>
+          </div>
+          <div className='mt-6'>
+            <div className='font-bold text-6xl'>6500<span className='text-4xl'>KG</span></div>
+            <div className='text-2xl'>số lượng hàng hoá xuất đi mỗi năm</div>
+          </div>
+        </div>
+      </div>
+      <ContactForm />
     </main>
   );
+}
+
+const SERVICES = [
+  {
+    title: 'Đầu tư vùng trồng',
+    img: '/img/home-service-1.jpeg'
+  },
+  {
+    title: 'Thu mua nguyên liệu',
+    img: '/img/home-service-2.jpeg'
+  },
+  {
+    title: 'Gia công',
+    img: '/img/home-service-3.jpeg'
+  },
+  {
+    title: 'Cung cấp nguyên liệu',
+    img: '/img/home-service-4.jpeg'
+  },
+  {
+    title: 'Xuất nhập khẩu quốc tế',
+    img: '/img/home-service-5.jpeg'
+  },
+  {
+    title: 'Xì gà',
+    img: '/img/home-service-5.jpeg'
+  },
+]
+
+const ServiceCard = ({ title, img }: { title: string, img: string }) => {
+  return (
+    <div className='flex flex-col mt-5 mx-20'>
+      <div className='self-start mb-1 bg-orange-400 text-white px-3 text-sm'>{title}</div>
+      <img className='w-[640px] h-[340px] object-cover' src={img} alt={title} />
+    </div>
+  );
+}
+
+const PRODUCTS = [
+  {
+    title: 'DARK FIRED CURED SOLID LEAF',
+    img: '/img/product-1.png'
+  },
+  {
+    title: 'DARK FIRED CURED SOLID LEAF',
+    img: '/img/product-2.png'
+  },
+  {
+    title: 'DARK FIRED CURED SOLID LEAF',
+    img: '/img/product-3.png'
+  }
+]
+
+const ProductCard = ({ title, img }: { title: string, img: string }) => {
+  return <div className='flex flex-col items-center border border-grey-button w-[450px]'>
+    <img className='h-[250px]' src={img} alt={title} />
+    <div className='uppercase text-grey-product'>{title}</div>
+  </div>
 }

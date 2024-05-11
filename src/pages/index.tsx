@@ -1,17 +1,11 @@
-import { Inter } from 'next/font/google';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Button } from '@/components/Button';
-import { InputField } from '@/components/InputField';
-import { Option, Select, Textarea } from '@material-tailwind/react';
-import { MailIcon, MapPin, PhoneIcon } from 'lucide-react';
+import { ContactForm } from '@/components/ContactForm';
 import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { ContactForm } from '@/components/ContactForm';
-
-const inter = Inter({subsets: ['latin']});
 
 const pagination = {
   clickable: true,
@@ -24,7 +18,7 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <main className={`flex min-w-full min-h-screen flex-col ${inter.className}`}>
+    <main className={`flex min-w-full min-h-screen flex-col`}>
       <Swiper
         modules={[Pagination]}
         slidesPerView={1}
@@ -54,7 +48,7 @@ export default function Home() {
         </SwiperSlide>
       </Swiper>
       <div className='mt-10'>
-        <div className='font-bold text-5xl text-center md:text-end md:text-5xl xl:text-8xl md:pr-24 mb-6 text-grey-english uppercase'>
+        <div className='font-bold text-3xl text-center md:text-end md:text-5xl xl:text-8xl md:pr-24 mb-6 text-grey-english uppercase'>
           About us
         </div>
         <div className='md:flex bg-background-default p-8'>
@@ -82,20 +76,20 @@ export default function Home() {
         </div>
       </div>
       <div className='mt-10'>
-        <div className='font-bold text-5xl md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
+        <div className='font-bold text-3xl md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
           Our services
         </div>
-        <div className='grid grid-cols-2 bg-background-default py-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 bg-background-default py-10'>
           {SERVICES.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
       </div>
       <div className='mt-10 mx-20'>
-        <div className='font-bold text-5xl text-center md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
+        <div className='font-bold text-3xl text-center md:text-5xl xl:text-8xl pl-24 mb-6 text-grey-english uppercase'>
           Products
         </div>
-        <div className='flex gap-10 mt-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-10'>
           {PRODUCTS.map((product, index) => (<ProductCard key={index} {...product} />))}
         </div>
       </div>
@@ -103,20 +97,19 @@ export default function Home() {
         <div className='bg-white brightness-[40%]'>
           <img className='w-[80%]' src='/img/world-map.png' alt='map' />
         </div>
-        <div className='absolute text-white right-20 mt-10'>
-          <div className='text-6xl uppercase font-bold'>Networks</div>
-          <div className='text-2xl text-right uppercase font-bold'>Mạng lưới phân phối</div>
-          <div className='mt-6'>
-            <div className='font-bold text-6xl'>120</div>
-            <div className='text-2xl'>nhà phân phối trong nước</div>
+        <div className='absolute text-white right-5 lg:right-20 mt-2 md:mt-5 lg:mt-14'>
+          <div className='text-sm md:text-lg lg:text-5xl uppercase font-bold'>Mạng lưới phân phối</div>
+          <div className='md:mt-2 lg:mt-6 flex gap-2'>
+            <div className='font-bold text-lg lg:text-6xl'>120</div>
+            <div className='text-sm md:text-lg lg:text-2xl self-center'>nhà phân phối trong nước</div>
           </div>
-          <div className='mt-6'>
-            <div className='font-bold text-6xl'>20</div>
-            <div className='text-2xl'>nước đã xuất khẩu</div>
+          <div className='md:mt-2 lg:mt-6 flex gap-2'>
+            <div className='font-bold text-lg lg:text-6xl'>20</div>
+            <div className='text-sm md:text-lg lg:text-2xl self-center'>nước đã xuất khẩu</div>
           </div>
-          <div className='mt-6'>
-            <div className='font-bold text-6xl'>6500<span className='text-4xl'>KG</span></div>
-            <div className='text-2xl'>số lượng hàng hoá xuất đi mỗi năm</div>
+          <div className='md:mt-2 lg:mt-6'>
+            <div className='font-bold text-lg lg:text-6xl'>6500<span className='text-md lg:text-4xl'>KG</span></div>
+            <div className='text-sm md:text-lg lg:text-2xl'>số lượng hàng hoá xuất đi mỗi năm</div>
           </div>
         </div>
       </div>
@@ -135,50 +128,52 @@ const SERVICES = [
     img: '/img/home-service-2.jpeg'
   },
   {
-    title: 'Gia công',
+    title: 'Gia công tách cọng',
     img: '/img/home-service-3.jpeg'
   },
   {
-    title: 'Cung cấp nguyên liệu',
-    img: '/img/home-service-4.jpeg'
-  },
-  {
     title: 'Xuất nhập khẩu quốc tế',
-    img: '/img/home-service-5.jpeg'
+    img: '/img/home-service-4.png'
   },
   {
-    title: 'Xì gà',
+    title: 'Cung cấp nguyên liệu',
     img: '/img/home-service-5.jpeg'
   },
 ]
 
 const ServiceCard = ({ title, img }: { title: string, img: string }) => {
   return (
-    <div className='flex flex-col mt-5 mx-20'>
-      <div className='self-start mb-1 bg-orange-400 text-white px-3 text-sm'>{title}</div>
-      <img className='w-[640px] h-[340px] object-cover' src={img} alt={title} />
+    <div className='group flex flex-col items-center my-5 mx-20'>
+      <div className='relative flex'>
+      <img className='brightness-50 group-hover:brightness-100 min-w-[400px] h-[266px] object-cover' src={img} alt={title} />
+      <div className='self-start absolute z-50 p-2 bg-orange-400 text-white px-3 text-sm'>{title}</div>
+      </div>
     </div>
   );
 }
 
 const PRODUCTS = [
   {
-    title: 'DARK FIRED CURED SOLID LEAF',
+    title: 'Thuốc lá chưa tách cọng',
     img: '/img/product-1.png'
   },
   {
-    title: 'DARK FIRED CURED SOLID LEAF',
+    title: 'Thuốc lá đã tách cọng',
     img: '/img/product-2.png'
   },
   {
-    title: 'DARK FIRED CURED SOLID LEAF',
+    title: 'Thuốc lá cọng',
     img: '/img/product-3.png'
+  },
+  {
+    title: 'Thuốc lá sợi',
+    img: '/img/product-4.png'
   }
 ]
 
 const ProductCard = ({ title, img }: { title: string, img: string }) => {
-  return <div className='flex flex-col items-center border border-grey-button w-[450px]'>
-    <img className='h-[250px]' src={img} alt={title} />
+  return <div className='flex flex-col items-center border border-grey-button'>
+    <img className='min-h-[250px]' src={img} alt={title} />
     <div className='uppercase text-grey-product'>{title}</div>
   </div>
 }

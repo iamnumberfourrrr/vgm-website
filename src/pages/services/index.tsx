@@ -8,7 +8,7 @@ export default function About() {
     <>
       <div className='bg-background-default px-20 py-10 flex flex-col'>
         <h1 className='border-b-4 border-orange-400 text-5xl font-bold'>{t`Services`}</h1>
-        <img src='/img/services.png' alt='services' />
+        <img src='/img/services.svg' alt='services' />
         <div>
           {
             SERVICES.map((service, index) => <ServiceItem key={index} {...service} index={index + 1} description='Công đoạn nạp liệu và xử lý sơ bộ, phân loại lá, tách bó, lựa tạp vật: Hệ thống nạp liệu liên động, đội ngũ công nhân lành nghề, chuyên cần.Công đoạn nạp liệu và xử lý sơ bộ, phân loại lá, tách bó, lựa tạp vật: Hệ thống nạp liệu liên động, đội ngũ công nhân lành nghề, chuyên cần.' />)

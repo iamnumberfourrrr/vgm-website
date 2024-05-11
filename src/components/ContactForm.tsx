@@ -10,7 +10,7 @@ export const ContactForm = () => {
   return (
     <div className='py-20'>
       <div className='uppercase text-3xl text-orange-400 text-center font-bold'>{t`Become our partner`}</div>
-      <div className='grid grid-cols-2 mx-20 mt-10'>
+      <div className='grid xl:grid-cols-2 mx-20 mt-10'>
         <div className='bg-grey-button text-white p-10'>
           <div className='underline decoration-orange-400 text-4xl'>{t`Contact detail`}</div>
           <div className='mt-10 flex gap-4'>
@@ -30,7 +30,7 @@ export const ContactForm = () => {
             </div>
           </div>
         </div>
-        <form className='mt-10 mx-5'>
+        <form className='mx-3 border-2 p-10'>
           <div className='grid grid-cols-2 gap-10'>
             <InputField label={t`Full Name`} />
             <InputField label={t`Company Name`} />

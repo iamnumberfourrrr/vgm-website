@@ -65,41 +65,42 @@ export default function About() {
         </div>
         <h2 className='text-4xl uppercase font-bold mt-20 text-center'>Thông tin công ty</h2>
         <table className='mt-10 bg-white'>
-          <tr>
+          <tr key='name'>
             <td rowSpan={2} className='p-3 border-2 border-solid border-grey-border'>Tên công ty</td>
             <td className='p-3 border-2 border-solid border-grey-border'>Công ty TNHH TM Vương Gia Minh</td>
           </tr>
-          <tr>
+          <tr key='english-name'>
           <td className='p-3 border-2 border-solid border-grey-border'>Vuong Gia Minh Tobacco Trading Company (English)</td>
           </tr>
-          <tr>
+          <tr key='date'>
             <td className='p-3 border-2 border-solid border-grey-border'>Ngày thành lập</td>
             <td className='p-3 border-2 border-solid border-grey-border'></td>
           </tr>
-          <tr>
+          <tr key='address'>
             <td className='p-3 border-2 border-solid border-grey-border'>Địa chỉ</td>
             <td className='p-3 border-2 border-solid border-grey-border'></td>
           </tr>
-          <tr>
+          <tr key='owner'>
             <td className='p-3 border-2 border-solid border-grey-border'>Chủ doanh nghiệp</td>
             <td className='p-3 border-2 border-solid border-grey-border'></td>
           </tr>
-          <tr>
+          <tr key='numOfEmployee'>
             <td className='p-3 border-2 border-solid border-grey-border'>Số nhân viên</td>
             <td className='p-3 border-2 border-solid border-grey-border'></td>
           </tr>
-          <tr>
+          <tr key='license'>
             <td className='p-3 border-2 border-solid border-grey-border'>Giấy phép kinh doanh</td>
             <td className='p-3 border-2 border-solid border-grey-border'></td>
           </tr>
         </table>
         <h2 className='text-4xl uppercase font-bold mt-20 text-center'>Mạng lưới phân phối</h2>
+        <h3 className='text-xl text-center mt-5'>Việt Nam, Campuchia, Indonesia, Malaysia, Trung Quốc, Brazil, Mozambique</h3>
         <img src='/img/world-map.png' className='mt-20' />
         <div className='mt-20'>Vương Gia Minh không chỉ đóng vai trò là cầu nối cho các doanh nghiệp trong nước mà còn liên kết với nhiều nhà đầu tư và doanh nghiệp quốc tế, bao gồm khu vực Nam Mỹ, Nam Phi và Đông Nam Á. Nhờ sở hữu một đội ngũ có chuyên môn về xuất nhập khẩu thuốc lá, Vương Gia Minh tự tin trong việc thu mua nguyên liệu và phân phối sản phẩm đã hoàn thiện. Điều này giúp chúng tôi xây dựng một chuỗi cung ứng linh hoạt, từ người trồng thuốc, doanh nghiệp sản xuất, cho đến người tiêu dùng, để đa dạng hóa sản phẩm và thúc đẩy sự phát triển của thuốc lá toàn cầu.</div>
         <Button className='mt-20 self-end'>Xem thêm về xuất khẩu</Button>
         <h2 className='text-4xl uppercase font-bold mt-20 text-center'>Hình ảnh công ty</h2>
         <div className='m-20 grid grid-cols-3 gap-5'>
-          {Array.from({ length: 6 }).map((_, index) => (<img key={index} src='/img/company-picture-1.jpeg' /> ))}
+          {Array.from({ length: 6 }).map((_, index) => (<img key={index} src={`/img/company-picture-${index + 1}.png`} /> ))}
         </div>
       </div>
       <ContactForm />

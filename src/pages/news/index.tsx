@@ -15,7 +15,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function News({ posts }) {
+export default function News({ posts }: any) {
   const { t } = useTranslation();
   return (
     <>

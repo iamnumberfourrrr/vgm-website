@@ -19,11 +19,11 @@ export const getStaticPaths = async () => {
   } satisfies GetStaticPathsResult
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const file = await fs.readFile(path.join(CONTENT_PATH, `${params.slug}.md`), 'utf8')
   return { props: { file } }
 }
 
-export default function NewPages({ file }) {
+export default function NewPages({ file }: any) {
   return <Markdown>{file}</Markdown>
 }

@@ -1,1 +1,14 @@
-{}
+{
+  "Home": "Home",
+  "About": "About",
+  "Services": "Services",
+  "News": "News",
+  "Contact": "Contact",
+  "See more": "See more",
+  "Footer": {
+    "Company name": "Công ty TNHH TM Vương Gia Minh",
+    "Company description": "Nhà phân phối thuốc lá uy tín hàng đầu Việt Nam với hơn 40 năm kinh nghiệm. Sản phẩm tốt - dịch vụ tốt -  hợp tác minh bạch với khách hàng và đối tác là phương châm chính của chúng tôi.",
+    "About": "Giới thiệu công ty"
+  },
+  "Back to news": "Trở về trang trước"
+}

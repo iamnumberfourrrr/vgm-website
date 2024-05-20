@@ -28,7 +28,11 @@ const config: Config = {
           'border': '#B9B9B9',
         },
         background: {
-          'default': 'rgba(248, 247, 240, 0.76)'
+          'default': 'rgba(248, 247, 240, 0.76)',
+          footer: '#EAE7DE',
+        },
+        tobacco: {
+          'dark': '#363022',
         }
       }
     },

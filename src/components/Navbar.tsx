@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from './Button';
+import { LanguageSelector } from './LanguageSelector';
 
 const LINKS = [
   {
@@ -101,16 +102,7 @@ export function Navbar() {
         onClick={() => router.push('/contact')} >
           {t('Contact')}
         </Button>
-        <select
-          className='bg-red px-3 py-0 my-5 ml-3 font-bold text-grey-button border-2  border-grey-button'
-          onChange={(ev) => {
-            i18n.changeLanguage(ev.target.value);
-          }}
-        >
-          <option value='en'>EN</option>
-          <option value='vi'>VI</option>
-          <option value='cn'>CN</option>
-        </select>
+        <LanguageSelector />
       </div>
     </nav>
   );

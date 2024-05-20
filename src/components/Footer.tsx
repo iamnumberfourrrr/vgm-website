@@ -1,62 +1,74 @@
+import { Trans, useTranslation } from 'react-i18next';
+import { BoxLink } from './BoxLink';
+import Image from 'next/image';
+import { LanguageSelector } from './LanguageSelector';
+
 const LINKS = [
   {
-    title: "About",
-    items: ["How it works", "Featured", "Partnership", "Business Relation"],
+    title: <Trans i18nKey='Footer.About' />,
+    href: '/about',
   },
   {
-    title: "Community",
-    items: ["Events", "Blog", "Podcast", "Invite a friend"],
+    title: <Trans i18nKey='Services' />,
+    href: '/services',
   },
   {
-    title: "Socials",
-    items: ["Discord", "Instagram", "Twitter", "Facebook"],
+    title: <Trans i18nKey='News' />,
+    href: '/news',
   },
+  {
+    title: <Trans i18nKey='Contact' />,
+    href: '/contact',
+  }
 ];
- 
+
+const SOCIALS = [
+  {
+    logo: '/logo/facebook.svg',
+    href: 'https://facebook.com'
+  },
+  {
+    logo: '/logo/zalo.svg',
+    href: 'https://zalo.com'
+  },
+  {
+    logo: '/logo/wechat.svg',
+    href: 'https://wechat.com'
+  }
+]
+
 const currentYear = new Date().getFullYear();
- 
+
 export function Footer() {
+  const { t } = useTranslation()
   return (
-    <footer className="relative w-full bg-background-default pt-20">
-      <div className="mx-auto w-full max-w-7xl px-8">
-        <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <div className="grid grid-cols-3 justify-between gap-4">
-            {LINKS.map(({ title, items }) => (
-              <ul key={title}>
-                <p
-                  className="mb-3 font-medium opacity-40"
-                >
-                  {title}
-                </p>
-                {items.map((link) => (
-                  <li key={link}>
-                    <p
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
-                    >
-                      {link}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            ))}
-          </div>
-          <div>
-            <img
-              src='/img/VGM-Logo.png'
-              alt='Vuong Gia Minh'
-              width={200}
-              height={85}
-            />
+    <footer className="relative w-full bg-background-footer pt-20 px-20">
+      <div className='flex border-b border-[#48628429] pb-20'>
+        <div className='flex flex-col gap-5 flex-[0_0_50%]'>
+          <p className='font-bold text-3xl text-[#363022]'>{t`Footer.Company name`}</p>
+          <p className='text-lg'>{t`Footer.Company description`}</p>
+          <div className='flex gap-4'>
+            {LINKS.map(l => <BoxLink key={l.href} {...l} />)}
           </div>
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
-          <p
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
-          >
-            &copy; {currentYear} Vuong Gia Minh. All
-            Rights Reserved.
-          </p>
+        <div className='ml-auto'>
+          <Image src='/logo/vgm.svg' width={380} height={110} alt='VGM Logo' />
+          <div className='flex gap-4 mt-[-25px] justify-center'>
+            {SOCIALS.map(({ logo, href }) => 
+            <a href={href} key={href} target='_blank'>
+              <div className='cursor-pointer bg-white rounded-full p-2 shadow-2xl'>
+              <Image className='w-[32px] h-[32px]' src={logo} width={32} height={32} alt='Social logo' />
+            </div>
+            </a>
+            )}
+          </div>
+          <div className='flex justify-center'>
+            <LanguageSelector />
+          </div>
         </div>
+      </div>
+      <div className='mt-10 font-bold'>
+      ©{currentYear} Công ty TNHH TM Vương Gia Minh
       </div>
     </footer>
   );

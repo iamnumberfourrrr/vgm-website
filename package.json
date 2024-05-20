@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@material-tailwind/react": "^2.1.9",
     "@tailwindcss/typography": "^0.5.13",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
     "gray-matter": "^4.0.3",
     "i18next": "^23.8.2",
@@ -24,6 +25,7 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "swiper": "^11.0.5",
+    "tailwind-merge": "^2.3.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

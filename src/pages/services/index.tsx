@@ -34,7 +34,7 @@ const SERVICES = [
   {
     title: 'Gia công sơ chế',
     description: 'Vương Gia Minh sử dụng các thiết bị hiện đại để tách cọng lá thuốc. Quy trình bao gồm các bước làm ẩm, phối trộn, và tách bó bằng hơi nước để tạo sư tinh khiết cho lá thuốc. Lá thuốc và cọng sau khi tách được sấy khô, phân loại và đóng thùng riêng theo yêu cầu. Cuối mỗi quy trình, công ty luôn lấy mẫu để kiểm tra chất lượng, đảm bảo đáp ứng các tiêu chuẩn đề ra của của doanh nghiệp sản xuất thuốc lá điếu.',
-    img: '/img/service-4.jpeg'
+    img: '/img/service-3.jpeg'
   },
   {
     title: 'Cung cấp nguyên liệu',

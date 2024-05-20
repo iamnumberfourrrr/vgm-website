@@ -10,12 +10,16 @@ import { useTranslation } from 'react-i18next';
 const CONTENT_PATH = path.join(process.cwd(), 'src/content');
 
 export const getStaticPaths = async () => {
-  const posts = await fs.readdir(CONTENT_PATH);
+  const posts = (await fs.readdir(CONTENT_PATH, { recursive: true }))
+  .filter(p => p.endsWith('.md'))
+  .map((p) => (p as string).replace(/\.md$/, ''))
+
   const paths = posts.map(p => ({
     params: {
-      slug: p.replace(/\.md$/, '')
+      slug: p.split('/')
     }
   }));
+
 
   return {
     paths,
@@ -24,7 +28,7 @@ export const getStaticPaths = async () => {
 }
 
 export async function getStaticProps({ params }: any) {
-  const file = await fs.readFile(path.join(CONTENT_PATH, `${params.slug}.md`), 'utf8')
+  const file = await fs.readFile(path.join(CONTENT_PATH, `${params.slug.join('/')}.md`), 'utf8')
   const matterResult = matter(file);
   const processedContent = await remark()
     .use(html)

@@ -1,13 +1,36 @@
 import { ContactForm } from '@/components/ContactForm';
 import { useTranslation } from 'react-i18next'
-import fs from 'fs';
+import fs, { promises } from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
+import { Button } from '@/components/Button';
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content');
 
+const parseMarkdown = async (fileName: string) =>  {
+  const file = await promises.readFile(path.join(CONTENT_PATH, `${fileName}.md`), 'utf8')
+  const matterResult = matter(file);
+
+  return {
+    title: matterResult.data.title,
+    date: dayjs(matterResult.data.date).format('DD/MM/YYYY'),
+    excerpt: matterResult.data.excerpt,
+    cover_image: matterResult.data.cover_image,
+  }
+}
+
 export async function getStaticProps() {
-  const posts = fs.readdirSync(CONTENT_PATH);
-  console.log('posts', posts)
+  const postPaths = fs.readdirSync(CONTENT_PATH).map(p => p.replace(/\.md$/, ''));
+  const posts = await Promise.all(postPaths.map(async p => {
+    return {
+      ...(await parseMarkdown(p)),
+      href: `/news/${p}`
+    }
+  }));
+
   return {
     props: {
       posts,
@@ -23,7 +46,7 @@ export default function News({ posts }: any) {
         <h1 className='border-b-4 border-orange-400 text-5xl font-bold'>{t`News`}</h1>
         <div>
           {
-            NEWS.map((news, index) => <NewsItem key={index} {...news} />)
+            posts.map((p: any) => <NewsItem key={p.title} title={p.title} date={p.date} description={p.excerpt} img={p.cover_image} href={p.href} />)
           }
         </div>
       </div>
@@ -32,40 +55,15 @@ export default function News({ posts }: any) {
   )
 }
 
-const NEWS = [
-  {
-    title: 'Mối lo ngại về thị trường thuốc lá có hương vị tại Việt Nam',
-    date: '20/10/2023',
-    description: 'Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.',
-    img: '/img/home-service-1.jpeg'
-  },
-  {
-    title: 'Mối lo ngại về thị trường thuốc lá có hương vị tại Việt Nam',
-    date: '20/10/2023',
-    description: 'Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.',
-    img: '/img/home-service-1.jpeg'
-  },
-  {
-    title: 'Mối lo ngại về thị trường thuốc lá có hương vị tại Việt Nam',
-    date: '20/10/2023',
-    description: 'Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.',
-    img: '/img/home-service-1.jpeg'
-  },
-  {
-    title: 'Mối lo ngại về thị trường thuốc lá có hương vị tại Việt Nam',
-    date: '20/10/2023',
-    description: 'Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.Thị trường thuốc lá có hương vị tại Việt Nam đang gia tăng và chính các loại hương vị có thể thúc đẩy việc sử dụng và mở rộng số lượng người hút các sản phẩm thuốc lá độc hại.',
-    img: '/img/home-service-1.jpeg'
-  }
-]
-
-const NewsItem = ({ title, description, date, img }: any) => {
+const NewsItem = ({ title, description, date, img, href }: any) => {
+  const router = useRouter();
   return <div className='m-10 flex bg-white h-[380px]'>
     <img src={img} alt={title} />
     <div className='ml-10 py-10'>
       <h2 className='text-2xl font-bold'>{title}</h2>
       <p className='text-grey-button'>{date}</p>
       <p className='mt-5'>{description}</p>
+      <Button onClick={() => router.push(href)} className='float-right mr-5'>Xem thêm</Button>
     </div>
   </div>
 }

@@ -1,9 +1,22 @@
 import { ContactForm } from '@/components/ContactForm';
 import { useTranslation } from 'react-i18next'
+import fs from 'fs';
+import path from 'path';
 
-export default function About() {
+const CONTENT_PATH = path.join(process.cwd(), 'src/content');
+
+export async function getStaticProps() {
+  const posts = fs.readdirSync(CONTENT_PATH);
+  console.log('posts', posts)
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+
+export default function News({ posts }) {
   const { t } = useTranslation();
-
   return (
     <>
       <div className='bg-background-default px-20 py-10 flex flex-col'>

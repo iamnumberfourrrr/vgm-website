@@ -12,10 +12,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export default function App({ Component, pageProps }: AppProps) {
   return <I18nextProvider i18n={i18n}>
-    <main className={plusJakartaSans.className}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </main>
+      <main className={plusJakartaSans.className}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </main>
   </I18nextProvider>
 }

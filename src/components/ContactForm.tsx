@@ -1,4 +1,3 @@
-import { Select, Textarea, Option } from '@material-tailwind/react';
 import { MailIcon, MapPin, PhoneIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Button } from './Button';
@@ -40,13 +39,13 @@ export const ContactForm = () => {
             <InputField label={t`Phone Number`} />
           </div>
           <div className="mt-20">
-            <Select variant='static' label={t`Country`} placeholder={t`Country`}>
+            {/* <Select variant='static' label={t`Country`} placeholder={t`Country`}>
               <Option>Vietnam</Option>
               <Option>China</Option>
-            </Select>
+            </Select> */}
           </div>
           <div className='mt-20'>
-            <Textarea variant='static' label={t`Message`} placeholder={t`Message`} />
+            {/* <Textarea variant='static' label={t`Message`} placeholder={t`Message`} /> */}
           </div>
           <Button className='float-end mt-10'>{t`Send`}</Button>
         </form>

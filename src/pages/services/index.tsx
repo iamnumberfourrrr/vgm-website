@@ -11,7 +11,7 @@ export default function About() {
         <img src='/img/services.svg' alt='services' />
         <div>
           {
-            SERVICES.map((service, index) => <ServiceItem key={index} {...service} index={index + 1} description='Công đoạn nạp liệu và xử lý sơ bộ, phân loại lá, tách bó, lựa tạp vật: Hệ thống nạp liệu liên động, đội ngũ công nhân lành nghề, chuyên cần.Công đoạn nạp liệu và xử lý sơ bộ, phân loại lá, tách bó, lựa tạp vật: Hệ thống nạp liệu liên động, đội ngũ công nhân lành nghề, chuyên cần.' />)
+            SERVICES.map((service, index) => <ServiceItem key={index} {...service} index={index + 1} />)
           }
         </div>
       </div>
@@ -23,28 +23,28 @@ export default function About() {
 const SERVICES = [
   {
     title: 'Đầu tư vùng trồng',
-    description: '',
-    img: '/img/home-service-1.jpeg'
+    description: 'Vương Gia Minh thực hiện đầu tư hàng năm vào vùng trồng thuốc lá, cung cấp chi phí, phân bón, và hỗ trợ kỹ thuật cho nông dân. Mục tiêu của công ty là nâng cao chất lượng nguồn thu và năng suất sản xuất thuốc lá để thúc đẩy phát triển kinh tế, cũng như cải thiện cuộc sống ở các vùng nông thôn.',
+    img: '/img/service-1.jpeg'
   },
   {
     title: 'Thu mua nguyên liệu',
-    description: '',
-    img: '/img/home-service-2.jpeg'
+    description: 'Vương Gia Minh thực hiện quy trình thu mua nguyên liệu thuốc lá chặt chẽ, kết nối trực tiếp với nông dân và doanh nghiệp sản xuất thuốc lá điếu, cả trong và ngoài nước. Quy trình bao gồm kiểm tra cận thị, lấy mẫu, và kiểm tra chất lượng. Công ty đảm bảo giá cả công bằng, cam kết hỗ trợ cộng đồng nông thôn và mang lại nguồn cung ứng nguyên liệu đa dạng và ổn định.',
+    img: '/img/service-2.jpeg'
   },
   {
     title: 'Gia công sơ chế',
-    description: '',
-    img: '/img/home-service-4.jpeg'
+    description: 'Vương Gia Minh sử dụng các thiết bị hiện đại để tách cọng lá thuốc. Quy trình bao gồm các bước làm ẩm, phối trộn, và tách bó bằng hơi nước để tạo sư tinh khiết cho lá thuốc. Lá thuốc và cọng sau khi tách được sấy khô, phân loại và đóng thùng riêng theo yêu cầu. Cuối mỗi quy trình, công ty luôn lấy mẫu để kiểm tra chất lượng, đảm bảo đáp ứng các tiêu chuẩn đề ra của của doanh nghiệp sản xuất thuốc lá điếu.',
+    img: '/img/service-4.jpeg'
   },
   {
     title: 'Cung cấp nguyên liệu',
-    description: '',
-    img: '/img/home-service-4.jpeg'
+    description: 'Vương Gia Minh lưu trữ nguyên liệu thuốc lá ở nhiệt độ từ 15-30 độ Celsius để tạo môi trường lý tưởng cho lên men tự nhiên, cải thiện hương vị và giảm độc hại. Quy trình giao hàng của công ty sử dụng phương tiện đường bộ, được kiểm tra và bảo dưỡng thường xuyên để đảm bảo an toàn và giao hàng đúng thời hạn. Đội ngũ giao hàng của Vương Gia Minh cũng được đào tạo về thuốc lá để đảm bảo chất lượng sản phẩm trong quá trình vận chuyển.',
+    img: '/img/service-4.png'
   },
   {
     title: 'Xuất khẩu quốc tế',
-    description: '',
-    img: '/img/home-service-5.jpeg'
+    description: 'Vương Gia Minh không chỉ đóng vai trò là cầu nối cho các doanh nghiệp trong nước mà còn liên kết với nhiều nhà đầu tư và doanh nghiệp quốc tế, bao gồm khu vực Nam Mỹ, Nam Phi và Đông Nam Á. Nhờ sở hữu một đội ngũ có chuyên môn về xuất nhập khẩu thuốc lá, Vương Gia Minh tự tin trong việc thu mua nguyên liệu và phân phối sản phẩm đã hoàn thiện. Điều này giúp chúng tôi xây dựng một chuỗi cung ứng linh hoạt, từ người trồng thuốc, doanh nghiệp sản xuất, cho đến người tiêu dùng, để đa dạng hóa sản phẩm và thúc đẩy sự phát triển của thuốc lá toàn cầu.',
+    img: '/img/service-5.jpeg'
   }
 ]
 

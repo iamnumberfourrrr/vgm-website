@@ -1,5 +1,3 @@
-import { Typography } from "@material-tailwind/react";
- 
 const LINKS = [
   {
     title: "About",
@@ -25,25 +23,18 @@ export function Footer() {
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
-                <Typography
-                  placeholder=''
-                  variant="small"
-                  color="blue-gray"
+                <p
                   className="mb-3 font-medium opacity-40"
                 >
                   {title}
-                </Typography>
+                </p>
                 {items.map((link) => (
                   <li key={link}>
-                    <Typography
-                      placeholder=''
-                      as="a"
-                      href="#"
-                      color="gray"
+                    <p
                       className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
                     >
                       {link}
-                    </Typography>
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -59,14 +50,12 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
-          <Typography
-            placeholder=''
-            variant="small"
+          <p
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
             &copy; {currentYear} Vuong Gia Minh. All
             Rights Reserved.
-          </Typography>
+          </p>
         </div>
       </div>
     </footer>

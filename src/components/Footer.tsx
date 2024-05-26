@@ -43,7 +43,7 @@ export function Footer() {
   const { t } = useTranslation()
   return (
     <footer className="relative w-full bg-background-footer pt-20 px-20">
-      <div className='flex border-b border-[#48628429] pb-20'>
+      <div className='flex flex-col border-b border-[#48628429] pb-20'>
         <div className='flex flex-col gap-5 flex-[0_0_50%]'>
           <p className='font-bold text-3xl text-[#363022]'>{t`Footer.Company name`}</p>
           <p className='text-lg'>{t`Footer.Company description`}</p>

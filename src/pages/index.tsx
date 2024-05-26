@@ -6,6 +6,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/router';
 
 const pagination = {
   clickable: true,
@@ -16,6 +17,7 @@ const pagination = {
 
 export default function Home() {
   const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <main className={`flex min-w-full min-h-screen flex-col`}>
@@ -38,13 +40,13 @@ export default function Home() {
               một trong những Công ty ở Việt Nam.
             </div>
           </div>
-          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+          <img className='min-w-full' src='/img/hero-1.jpg' alt='hero-1' />
         </SwiperSlide>
         <SwiperSlide className='relative min-w-full'>
-          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+          <img className='min-w-full' src='/img/hero-2.jpg' alt='hero-2' />
         </SwiperSlide>
         <SwiperSlide className='relative min-w-full'>
-          <img className='min-w-full' src='/img/hero-1.png' alt='hero-1' />
+          <img className='min-w-full' src='/img/hero-3.jpg' alt='hero-3' />
         </SwiperSlide>
       </Swiper>
       <div className='mt-10'>
@@ -69,7 +71,7 @@ export default function Home() {
               Đông Nam Á và tạo nên tương lai sáng hơn cho thị trường thuốc lá
               Việt Nam.
             </div>
-            <Button className='float-end'>
+            <Button className='float-end' onClick={() => router.push('/about')}>
               {t('See more')}
             </Button>
           </div>
@@ -121,29 +123,35 @@ export default function Home() {
 const SERVICES = [
   {
     title: 'Đầu tư vùng trồng',
-    img: '/img/home-service-1.jpeg'
+    img: '/img/home-service-1.jpeg',
+    link: 'invest'
   },
   {
     title: 'Thu mua nguyên liệu',
-    img: '/img/home-service-2.jpeg'
+    img: '/img/home-service-2.jpeg',
+    link: 'purchase'
   },
   {
     title: 'Gia công tách cọng',
-    img: '/img/home-service-3.jpeg'
+    img: '/img/home-service-3.jpeg',
+    link: 'processing'
   },
   {
     title: 'Xuất nhập khẩu quốc tế',
-    img: '/img/home-service-4.png'
+    img: '/img/home-service-4.png',
+    link: 'supply'
   },
   {
     title: 'Cung cấp nguyên liệu',
-    img: '/img/home-service-5.jpeg'
+    img: '/img/home-service-5.jpeg',
+    link: 'export'
   },
 ]
 
-const ServiceCard = ({ title, img }: { title: string, img: string }) => {
+const ServiceCard = ({ title, img, link }: { title: string, img: string, link: string }) => {
+  const router = useRouter();
   return (
-    <div className='group flex flex-col items-center my-5 mx-20'>
+    <div onClick={() => router.push(`/services#${link}`)} className='group cursor-pointer flex flex-col items-center my-5 mx-20'>
       <div className='relative flex'>
       <img className='brightness-50 group-hover:brightness-100 min-w-[400px] h-[266px] object-cover' src={img} alt={title} />
       <div className='self-start absolute z-50 p-2 bg-orange-400 text-white px-3 text-sm'>{title}</div>
